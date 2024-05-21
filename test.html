@@ -4,6 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+        }
+        
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            /* align-items: stretch; */
+            overflow: hidden;
+        
+        }
+        
+        .grid{
+            flex: 1 0;
+            flex-basis: calc(100%/4);
+            padding: 0px;
+            border: 1px solid;
+            border-color: bisque;
+            text-align: center;
+            font-size: 5px;
+        }
+
+        .grid.active{
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     <form id="test-input">
@@ -12,6 +48,24 @@
     </form>
     <h1 id="output1">Text Output</h1>
     <h1 id="output2">Slider Value</h1>
+    <div class="container">
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+    </div>
     <script>
         const input = document.querySelector("#name")
         input.addEventListener('input', function(){
@@ -25,6 +79,27 @@
         slider.addEventListener('change', function(){
             const output2 = document.querySelector('#output2')
             output2.innerText = slider.value
+        })
+
+        const grid = document.querySelectorAll(".grid")
+        let isMouseDown = false
+        let activeGrid = null
+        grid.forEach((grid) => {
+            grid.addEventListener('mousedown', ()=>{
+                isMouseDown = true
+                activeGrid = event.target
+                activeGrid.classList.add('active')
+            })
+            grid.addEventListener('mousemove', ()=>{
+                if (isMouseDown){
+                    activeGrid = event.target
+                    activeGrid.classList.add('active')
+                }
+            })
+            grid.addEventListener('mouseup', ()=>{
+                activeGrid.classList.add('active')
+                isMouseDown = false
+            })
         })
     </script>
 </body>
