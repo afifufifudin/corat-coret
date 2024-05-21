@@ -24,7 +24,7 @@ main{
     flex: 1 0;
     /* flex-basis: calc(100%/16); */
     /* padding: 1px; */
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     text-align: center;
     font-size: 5px;
 }

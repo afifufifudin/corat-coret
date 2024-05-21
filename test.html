@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <form id="test-input">
+        <input type="text" name="name" id="name">
+        <input type="range" name="slider" id="slider" min="2" max="5" value="1">
+    </form>
+    <h1 id="output1">Text Output</h1>
+    <h1 id="output2">Slider Value</h1>
+    <script>
+        const input = document.querySelector("#name")
+        input.addEventListener('input', function(){
+            const panjang_karakter = input.value.length
+            console.log(panjang_karakter)
+            const output = document.querySelector('#output1')
+            output.innerText = input.value
+        })
+
+        const slider = document.querySelector("#slider")
+        slider.addEventListener('change', function(){
+            const output2 = document.querySelector('#output2')
+            output2.innerText = slider.value
+        })
+    </script>
+</body>
+</html>
